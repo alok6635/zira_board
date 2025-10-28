@@ -1,0 +1,34 @@
+.task_card {
+    width: 100%;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px 24px;
+}
+.task_text {
+    font-size: 16px;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+.task_card_tags {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.task_delete {
+    width: 30px;
+    height: 35px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.delete_icon:hover {
+    background-color: #ebebeb;
+}
+.delete_icon {
+    width: 20px;
+    opacity: 50%;
+}
