@@ -5,7 +5,7 @@
 }
 .app{
     display: grid;
-    grid-template-rows: 100px auto;
+    grid-template-rows: 60px auto;
 }
 .app_main{
     display: flex;
@@ -14,4 +14,5 @@
 }
 .highlight{
      text-align: center; 
+     padding-top: 10px;
 }

@@ -6,6 +6,7 @@
 }
 .app_header>form {
     width: 40%;
+    margin-bottom:6px;
 }
 
 .task_input {
@@ -47,8 +48,8 @@
     background-color: blue;
     color: #fff;
     border-radius: 5px;
-    height: 40px;
-    padding: 3px 13px;
+    height: 28px;
+    padding: 1px 13px;
     border: none;
     cursor: pointer;
     margin-left: 10px;

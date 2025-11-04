@@ -23,6 +23,17 @@ const TaskForm = () => {
 
     const selectedTag = (tag) => {
         console.log("tag data heee...",taskData.tags)
+        if(taskData.tags.some((item)=> item === tag)){
+               const filterTags = taskData.filter((item)=> item !== tag);
+               setTaskData(prev=>{
+                return {...prev, tag : filterTags}
+               })
+        }
+        else{
+setTaskData(prev=>{
+    return {...prev, tags:[...prev.tag, tag]}
+})
+        }
         // if (taskData.tags.some((item) => item === tag)) {
         //     const filterTags = taskData.tags.filter((item) => item !== tag);
         //     settaskData(prev => {
