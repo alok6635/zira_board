@@ -5,30 +5,41 @@
     padding: 15px;
     margin: 15px 24px;
 }
+
 .task_text {
-    font-size: 16px;
-    font-weight: 900;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 700;
 }
-.task_card_tags {
+
+.task_card_bottom_line {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .task_delete {
-    width: 30px;
+    width: 35px;
     height: 35px;
     border-radius: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-items: center;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
-.delete_icon:hover {
+.delete_icon{
+ width: 25px;
+ height: 25px;
+ opacity: 50%;
+}
+.task_delete:hover{
     background-color: #ebebeb;
 }
-.delete_icon {
-    width: 20px;
-    opacity: 50%;
+.card_data_cover {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card_data {
+    display: flex;
 }
