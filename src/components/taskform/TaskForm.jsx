@@ -2,15 +2,12 @@ import { useState } from "react";
 import Tag from "../tag/Tag";
 import "./taskform.css";
 
-
-const TaskForm = ({setTasks})=>{
-const TaskForm = () => {
+const TaskForm = ({ setTasks }) => {
     const [taskData, setTaskData] = useState({
         task: '',
         status: 'Ready for Development',
         tags: []
     });
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setTaskData((prev) => {
@@ -19,13 +16,21 @@ const TaskForm = () => {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        setTasks((prev)=>{
+        setTasks((prev) => {
             return [...prev, taskData]
         })
         setTaskData(taskData)
     }
-    const checkTag=(tag)=>{
-        return taskData.tags.some((item)=> item === tag)
+    const checkTag = (tag) => {
+        return taskData.tags.some((item) => item === tag)
+    }
+    // optimize code for  selectedTag-
+    const selectedTag = (tag) => {
+        setTaskData((prev) => {
+            const isSelected = prev.tags.includes(tag);
+            const tags = isSelected ? taskData.tags.filter((item) => item !== tag) : [...prev.tags, tag];
+            return { ...prev, tags }
+        })
     }
     // const selectedTag = (tag) => {
     //     console.log("tag data heee...", taskData.tags)
@@ -42,24 +47,14 @@ const TaskForm = () => {
     //     }
     //     console.log(tag)
     // }
-
-// optimize code for  selectedTag-
-    
-const selectedTag = (tag) => {
-        setTaskData((prev) => {
-            const isSelected = prev.tags.includes(tag);
-            const tags = isSelected ? taskData.tags.filter((item) => item !== tag) : [...prev.tags, tag];
-            return {...prev, tags}
-        })
-    }
     return (
         <header className='app_header'>
             <form onSubmit={handleSubmit}>
-                <input type='text' name="task" className='task_input' placeholder='Enter task-details' onChange={handleChange}/>
+                <input type='text' name="task" className='task_input' placeholder='Enter task-details' onChange={handleChange} />
                 <div className='task_form_bottom'>
-                    <Tag tagName="DEV" selectedTag={selectedTag} selected ={checkTag("DEV")}/>
-                    <Tag tagName="QA" selectedTag={selectedTag} selected ={checkTag("QA")}/>
-                    <Tag tagName="Product Owner" selectedTag={selectedTag} selected ={checkTag("Product Owner")}/>
+                    <Tag tagName="DEV" selectedTag={selectedTag} selected={checkTag("DEV")} />
+                    <Tag tagName="QA" selectedTag={selectedTag} selected={checkTag("QA")} />
+                    <Tag tagName="Product Owner" selectedTag={selectedTag} selected={checkTag("Product Owner")} />
                     <select className="task_status" name="status" onChange={handleChange}>
                         <option value="Ready for Development">Ready for Development</option>
                         <option value="In Progress">In Progress</option>
@@ -71,6 +66,5 @@ const selectedTag = (tag) => {
             </form>
         </header>
     )
-}
 }
 export default TaskForm;
