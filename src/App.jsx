@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const App = () => {
   const [task,setTasks]= useState([]);
-  console.log(task);
+  // console.log(task);
 
   return (
     <div className='app'>
@@ -15,10 +15,10 @@ const App = () => {
       <TaskForm setTasks={setTasks}/>
       {/* showing the card in this section */}
       <main className='app_main'>
-        <TaskColumn title="Ready for Development" />
-        <TaskColumn title="In Progress" />
-        <TaskColumn title="Ready for Test" />
-        <TaskColumn title="Closed" icon={closedIcon} />
+        <TaskColumn title="Ready for Development" task={task} status="Ready for Development"/>
+        <TaskColumn title="In Progress" task={task} status="In Progres"/>
+        <TaskColumn title="Ready for Test" task={task} status="Ready for Test"/>
+        <TaskColumn title="Closed" icon={closedIcon} task={task} status="Closed"/>
       </main>
     </div>
   )
