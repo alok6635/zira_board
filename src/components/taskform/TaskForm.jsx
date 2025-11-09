@@ -2,7 +2,7 @@ import { useState } from "react";
 import Tag from "../tag/Tag";
 import "./taskform.css";
 
-const TaskForm = () => {
+const TaskForm = (setTasks)=>{
     const [taskData, setTaskData] = useState({
         task: '',
         status: 'Ready for Development',
@@ -16,11 +16,14 @@ const TaskForm = () => {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
+        setTaskData((prev)=>{
+            return [...prev,taskData]
+        })
+        setTaskData(taskData)
     }
     const checkTag = (tag) => {
         return taskData.tags.some((item) => item === tag)
     }
-
     // const selectedTag = (tag) => {
     //     console.log("tag data heee...", taskData.tags)
     //     if (taskData.tags.some((item) => item === tag)) {
@@ -38,19 +41,18 @@ const TaskForm = () => {
     // }
 
 // optimize code for  selectedTag-
-    const selectedTag = (tag) => {
+    
+const selectedTag = (tag) => {
         setTaskData((prev) => {
             const isSelected = prev.tags.includes(tag);
             const tags = isSelected ? taskData.tags.filter((item) => item !== tag) : [...prev.tags, tag];
             return {...prev, tags}
         })
     }
-
-
     return (
         <header className='app_header'>
             <form onSubmit={handleSubmit}>
-                <input type='text' name="task" className='task_input' placeholder='Enter task-details' onChange={handleChange} />
+                <input type='text' name="task" className='task_input' placeholder='Enter task-details' onChange={handleChange}/>
                 <div className='task_form_bottom'>
                     <Tag tagName="DEV" selectedTag={selectedTag} selected={checkTag("DEV")} />
                     <Tag tagName="QA" selectedTag={selectedTag} selected={checkTag("QA")} />
@@ -61,7 +63,7 @@ const TaskForm = () => {
                         <option value="Ready for Test">Ready for Test</option>
                         <option value="Closed">Closed</option>
                     </select>
-                    <button className='task_submit' type='submit'>+Add</button>
+                    <button className='task_submit' type='submit' onClick={handleSubmit}>+Add</button>
                 </div>
             </form>
         </header>

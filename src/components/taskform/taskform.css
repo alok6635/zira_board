@@ -21,7 +21,7 @@
     width: 95%;
 }
 .task_input::placeholder{
-    color: red;
+    color: pink;
 }
 
 .task_form_bottom {

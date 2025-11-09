@@ -1,7 +1,7 @@
 export const tagStyle = {
-    DEV: { background: "#272EF5" },
-    QA: { background: "#27F546" },
-    PO: { background: "#F5B427" }
+    DEV: { background: "#27F5E4" },
+    QA: { background: "#27CCF5" },
+    PO: { background: "#f58427ff" }
 }
 export const tagKeyMap = {
     DEV: "DEV",
